@@ -1,7 +1,19 @@
-//https://colab.research.google.com/drive/1R_TTQMpEI2r5xls9Nahj4UUuC-fjbHl9?usp=sharing//
+//view the code on this link: https://colab.research.google.com/drive/1R_TTQMpEI2r5xls9Nahj4UUuC-fjbHl9?usp=sharing//
 // for my code to make a map need  8s and read the data need to 7s //
 // i will use the data which is about  COVID-19 , like how many people die , The number of people infected, or the age range of those who died，etc.//
 //
 
 
+import os, zipfile
+import pandas as pd
+import matplotlib.pyplot as plt
 
+
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
+
+from google.colab import data_table
+data_table.enable_dataframe_formatter()
+Comap=gpd.read_file('CO_CARTO.shp')
+Comap.plot()
+Comap.dtypes
