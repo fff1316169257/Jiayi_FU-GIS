@@ -36,6 +36,8 @@ Comap
 
 USmap=gpd.read_file('CO_CARTO.shp')
 USmap.plot()
+USmap.plot(figsize=(30,36),column='POP70',legend=True,cmap='YlOrRd',k=5,edgecolor='grey',linewidth=2,legend_kwds= {"fmt": "{:,.0f}"})
+USmap.dtypes
 fig, ax = plt.subplots(1, figsize=(6,10))
 USmap.plot(ax=ax, color='white', edgecolor='black',linewidth=1)
 Comap.plot(ax=ax, marker='o', color='red', markersize=10)
