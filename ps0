@@ -2,18 +2,43 @@
 // for my code to make a map need  8s and read the data need to 7s //
 // i will use the data which is about  COVID-19 , like how many people die , The number of people infected, or the age range of those who died，etc.//
 //
-
-
 import os, zipfile
 import pandas as pd
 import matplotlib.pyplot as plt
-
 
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 
 from google.colab import data_table
 data_table.enable_dataframe_formatter()
-Comap=gpd.read_file('CO_CARTO.shp')
+
+import geopandas as gpd
+
+! wget -q -O  COVID-19_Cases_US.cpg 'https://doc.google.com/uc?export=download&id=1pOGtu9F_2Pt8E1My91mkyN6gMM6_7uBD&export=download'
+! wget -q -O  COVID-19_Cases_US.dbf 'https://doc.google.com/uc?export=download&id=1jMACA42YT8L7-FBzABRNXds44214RWxN&export=download'
+! wget -q -O  COVID-19_Cases_US.prj 'https://doc.google.com/uc?export=download&id=10aa6qIA0jUd-vlkdXArPf5ClGuWrtNpT&export=download'
+! wget -q -O  COVID-19_Cases_US.shx 'https://doc.google.com/uc?export=download&id=1oYXIpRRKF7rFAYqNYZ1osMQ7KNbJI13Q&export=download'
+! wget -q -O  COVID-19_Cases_US.shp 'https://doc.google.com/uc?export=download&id=1PK2L4msVU2plUZ2r71ovveY7t_Xn1U75&export=download'
+
+Comap=gpd.read_file('COVID-19_Cases_US.shp')
 Comap.plot()
 Comap.dtypes
+Comap.head(5)
+Comap.plot(figsize=(30,36),column='Deaths',legend=True,cmap='YlOrRd',k=5,edgecolor='grey',linewidth=2,legend_kwds= {"fmt": "{:,.0f}"})
+Comap.plot(figsize=(30,36),column='Confirmed',legend=True,cmap='YlOrRd',k=5,edgecolor='grey',linewidth=2,legend_kwds= {"fmt": "{:,.0f}"})
+Comap
+
+
+! wget -q -O  CO_CARTO.dbf 'https://doc.google.com/uc?export=download&id=1sn_2cJkI6kVd2ZqwC0IUvyEtYRJprT5x&export=download'
+! wget -q -O  CO_CARTO.prj 'https://doc.google.com/uc?export=download&id=17vkpihMWmYFNul8ewnmP2GtWnJLS4brR&export=download'
+! wget -q -O  CO_CARTO.shx 'https://doc.google.com/uc?export=download&id=1brZUDHcstbz9f0oHY0nGtZRmm54qxqSX&export=download'
+! wget -q -O  CO_CARTO.shp 'https://doc.google.com/uc?export=download&id=1fG5KpRxaG_M8m4hfW9KUhzUZLtDRRbop&export=download'
+
+USmap=gpd.read_file('CO_CARTO.shp')
+USmap.plot()
+fig, ax = plt.subplots(1, figsize=(6,10))
+USmap.plot(ax=ax, color='white', edgecolor='black',linewidth=1)
+Comap.plot(ax=ax, marker='o', color='red', markersize=10)
+
+ax.set_xticks([]) 
+ax.set_yticks([]) 
