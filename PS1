@@ -1,0 +1,3 @@
+for the ps1 i was make two map about nj death and nj confirmed .
+then data was come from the CDC, i was downloard NJmap and excal about nj death and nj confirmed
+the link is https://colab.research.google.com/drive/1R_TTQMpEI2r5xls9Nahj4UUuC-fjbHl9#scrollTo=VHZ1T3oiKItW
